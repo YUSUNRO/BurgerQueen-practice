@@ -31,7 +31,7 @@ public class Cart {
 
 
         System.out.println("-".repeat(60));
-        System.out.printf("합계 : %d원\n", 금액 합계);
+        System.out.printf("합계 : %d원\n", calculateTotalPrice());
 
         System.out.println("이전으로 돌아가려면 엔터를 누르세요. ");
         scanner.nextLine();
@@ -119,14 +119,14 @@ public class Cart {
 
     private BurgerSet composeSet(Hamburger hamburger) {
         System.out.println("사이드를 골라주세요");
-        menu.printSides();
+        menu.printSides(false);
 
         String sideId = scanner.nextLine();
         Side side = (Side) productRepository.findById(Integer.parseInt(sideId));
         chooseOption(side);
 
         System.out.println("음료를 골라주세요.");
-        menu.printDrinks();
+        menu.printDrinks(false);
 
         String drinkId = scanner.nextLine();
         Drink drink = (Drink) productRepository.findById(Integer.parseInt(drinkId));
