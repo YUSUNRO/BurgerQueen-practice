@@ -14,4 +14,8 @@ public class ProductRepository {
             new Drink(6, "제로콜라", 1000, 0, true),
     };
 
+    public Product[] getAllProducts() {
+        return products;
+    }
+
 }
