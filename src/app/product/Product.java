@@ -13,6 +13,7 @@ public class Product {
         this.kcal = kcal;
     }
 
+
     public int getId() {
         return id;
     }
