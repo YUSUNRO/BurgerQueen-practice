@@ -18,11 +18,23 @@ public class BurgerSet extends Product {
         return hamburger;
     }
 
+    public void setHamburger(Hamburger hamburger) {
+        this.hamburger = hamburger;
+    }
+
     public Side getSide() {
         return side;
     }
 
+    public void setSide(Side side) {
+        this.side = side;
+    }
+
     public Drink getDrink() {
         return drink;
+    }
+
+    public void setDrink(Drink drink) {
+        this.drink = drink;
     }
 }

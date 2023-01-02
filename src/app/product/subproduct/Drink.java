@@ -10,11 +10,11 @@ public class Drink extends Product {
         this.hasStraw = hasStraw;
     }
 
-    public void setHasStraw(boolean hasStraw) {
-        this.hasStraw = hasStraw;
-    }
-
     public boolean isHasStraw() {
         return hasStraw;
+    }
+
+    public void setHasStraw(boolean hasStraw) {
+        this.hasStraw = hasStraw;
     }
 }
