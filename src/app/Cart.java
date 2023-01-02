@@ -27,9 +27,7 @@ public class Cart {
     public void printCart() {
         System.out.println("🧺 장바구니");
         System.out.println("-".repeat(60));
-
-
-
+        printCartItemDetails();
         System.out.println("-".repeat(60));
         System.out.printf("합계 : %d원\n", calculateTotalPrice());
 
@@ -78,7 +76,7 @@ public class Cart {
         }
     }
 
-    private int calculateTotalPrice() {
+    protected int calculateTotalPrice() {
         int totalPrice = 0;
         for (Product product : items) {
             totalPrice += product.getPrice();
@@ -88,8 +86,25 @@ public class Cart {
 
     public void addToCart(int productId) {
         Product product = productRepository.findById(productId);
-
         chooseOption(product);
+
+        if (product instanceof Hamburger) {
+            Hamburger hamburger = (Hamburger) product;
+            if (hamburger.isBurgerSet()) product = composeSet(hamburger);
+        }
+
+        Product newProduct;
+        if (product instanceof Hamburger) newProduct = new Hamburger((Hamburger) product);
+        else if (product instanceof Side) newProduct = new Side((Side) product);
+        else if (product instanceof Drink) newProduct = new Drink((Drink) product);
+        else newProduct = new BurgerSet((BurgerSet) product);
+
+        Product[] newItems = new Product[items.length + 1];
+        System.arraycopy(items, 0, newItems, 0, items.length);
+        newItems[newItems.length - 1] = newProduct;
+        items = newItems;
+
+        System.out.printf("[📣] %s를(을) 장바구니에 담았습니다.\n", product.getName());
     }
 
     private void chooseOption(Product product) {

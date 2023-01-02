@@ -15,6 +15,7 @@ public class OrderApp {
         Menu menu = new Menu(products);
 
         Cart cart = new Cart(productRepository, menu);
+        Order order = new Order(cart);
 
         System.out.println("🍔 BurgerQueen Order Service");
 
@@ -23,7 +24,7 @@ public class OrderApp {
             String input = scanner.nextLine();
 
             if (input.equals("+")) {
-//            주문 내역 출력
+                order.makeOrder();
                 break;
             } else {
                 int menuNumber = Integer.parseInt(input);
